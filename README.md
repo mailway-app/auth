@@ -1,3 +1,3 @@
 # auth
 
-> SMTP auth and backend selector
+> SMTP auth and backend selector for NGINX
