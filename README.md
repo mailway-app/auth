@@ -1,1 +1,3 @@
-# smtp-auth
+# auth
+
+> SMTP auth and backend selector
