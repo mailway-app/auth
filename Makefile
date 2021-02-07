@@ -1,5 +1,6 @@
 VERSION = 1.0.0
 DIST = $(PWD)/dist
+FPM_ARGS =
 
 .PHONY: clean
 clean:
@@ -11,4 +12,4 @@ $(DIST)/auth: server.go
 
 .PHONY: deb
 deb: $(DIST)/auth
-	fpm -n auth -s dir -t deb --chdir=$(DIST) --version=$(VERSION)
+	fpm -n auth -s dir -t deb --chdir=$(DIST) --version=$(VERSION) $(FPM_ARGS)
