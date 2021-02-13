@@ -5,6 +5,8 @@ import (
 	"net/http"
 
 	mailwayConfig "github.com/mailway-app/config"
+
+	log "github.com/sirupsen/logrus"
 )
 
 var config *mailwayConfig.Config
@@ -13,13 +15,15 @@ func main() {
 	var err error
 	config, err = mailwayConfig.Read()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
+	log.SetLevel(config.GetLogLevel())
+	log.SetFormatter(config.GetLogFormat())
 
 	http.HandleFunc("/", AuthServer)
 	addr := fmt.Sprintf("127.0.0.1:%d", config.PortAuth)
 	if err := http.ListenAndServe(addr, nil); err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 }
 
