@@ -6,7 +6,7 @@ FPM_ARGS =
 clean:
 	rm -rf $(DIST) *.deb
 
-$(DIST)/auth: server.go
+$(DIST)/auth: server.go login.go
 	mkdir -p $(DIST)
 	go build -o $(DIST)/usr/local/sbin/auth
 
